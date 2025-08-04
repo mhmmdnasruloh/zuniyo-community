@@ -9,6 +9,12 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <!-- Form Search -->
+    <form action="{{ route('komunitas.index') }}" method="GET" class="mb-3 d-flex">
+        <input type="text" name="search" class="form-control me-2" placeholder="Cari komunitas..." value="{{ request('search') }}">
+        <button type="submit" class="btn btn-outline-primary">Cari</button>
+    </form>
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -44,5 +50,9 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center">
+        {{ $komunitas->links() }}
+    </div>
 </div>
 @endsection
