@@ -43,4 +43,47 @@ class KomunitasController extends Controller
 
         return redirect()->route('komunitas.index')->with('success', 'Komunitas berhasil ditambahkan!');
     }
+    public function destroy($id)
+{
+    $komunitas = Komunitas::findOrFail($id);
+
+    // Hapus logo dari storage kalau ada
+    if ($komunitas->logo && \Storage::exists('public/' . $komunitas->logo)) {
+        \Storage::delete('public/' . $komunitas->logo);
+    }
+
+    $komunitas->delete();
+
+    return redirect()->route('komunitas.index')->with('success', 'Komunitas berhasil dihapus!');
+}
+    public function edit($id)
+    {   
+    $komunitas = Komunitas::findOrFail($id);
+    return view('komunitas.edit', compact('komunitas'));
+    }
+
+    public function update(Request $request, $id)
+    {
+    $validated = $request->validate([
+        'nama' => 'required|string|max:255',
+        'deskripsi' => 'nullable|string',
+        'universitas' => 'required|string|max:255',
+        'logo' => 'nullable|image|max:2048',
+    ]);
+
+    $komunitas = Komunitas::findOrFail($id);
+
+    if ($request->hasFile('logo')) {
+        // Hapus logo lama jika ada
+        if ($komunitas->logo && \Storage::disk('public')->exists($komunitas->logo)) {
+            \Storage::disk('public')->delete($komunitas->logo);
+        }
+        $validated['logo'] = $request->file('logo')->store('logos', 'public');
+    }
+
+    $komunitas->update($validated);
+
+    return redirect()->route('komunitas.index')->with('success', 'Komunitas berhasil diupdate!');
+}
+
 }

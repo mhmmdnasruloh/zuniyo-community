@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateKomunitasTable extends Migration
 {
     /**
-     * Run the migrations.
+     * jalankan migrations.
      */
     public function up(): void
     {
@@ -21,7 +21,7 @@ class CreateKomunitasTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * SIMPAN migrations.
      */
     public function down(): void
     {

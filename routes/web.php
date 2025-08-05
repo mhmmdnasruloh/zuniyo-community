@@ -10,3 +10,6 @@ Route::get('/', function () {
 
 // Resource route untuk CRUD komunitas
 Route::resource('komunitas', KomunitasController::class);
+Route::get('/komunitas/{id}/edit', [KomunitasController::class, 'edit'])->name('komunitas.edit');
+Route::put('/komunitas/{id}', [KomunitasController::class, 'update'])->name('komunitas.update');
+Route::delete('/komunitas/{id}', [KomunitasController::class, 'hapus'])->name('komunitas.hapus');
