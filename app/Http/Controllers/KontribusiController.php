@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kontribusi;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\KontribusiMasukMail;
 
 class KontribusiController extends Controller
 {
-    // Form publik
+    // ini Form publik le
     public function create()
     {
         return view('kontribusi.create');
     }
 
-    // Simpan kontribusi
+    //  kontribusi
     public function store(Request $request)
     {
         $request->validate([
@@ -21,11 +23,17 @@ class KontribusiController extends Controller
             'judul' => 'required',
             'isi' => 'required',
             'email' => 'nullable|email',
+            'jenis' => 'nullable|string'
         ]);
 
-        Kontribusi::create($request->all());
+        $kontribusi = Kontribusi::create($request->all());
 
-        return redirect()->back()->with('success', 'Kontribusi berhasil dikirim!');
+        // Kirim email hanya jika user isi email
+        if ($kontribusi->email) {
+            Mail::to($kontribusi->email)->send(new KontribusiMasukMail($kontribusi));
+        }
+
+        return redirect()->back()->with('success', 'Kontribusi berhasil dikirim! Email notifikasi juga dikirim jika kamu isi email.');
     }
 
     // Tampilkan daftar kontribusi (admin)
