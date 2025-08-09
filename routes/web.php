@@ -27,3 +27,10 @@ Route::post('/kontribusi', [KontribusiController::class, 'store'])->name('kontri
 
 // List kontribusi (Admin)
 Route::get('/admin/kontribusi', [KontribusiController::class, 'index'])->name('kontribusi.index');
+
+// Form Aspirasi (Publik)
+Route::get('/aspirasi/create', [AspirasiController::class, 'create']);
+Route::post('/aspirasi', [AspirasiController::class, 'store']);
+
+// Admin
+Route::get('/admin/aspirasi', [AspirasiController::class, 'index']);
