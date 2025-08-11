@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KomunitasController;
 use App\Http\Controllers\KontribusiController;
+use App\Http\Controllers\AspirasiController; // ✅ Tambahin ini
 
 // Redirect home ke halaman komunitas
 Route::get('/', function () {
-return redirect('/komunitas');
+    return redirect('/komunitas');
 });
 
 // =======================
@@ -28,9 +29,13 @@ Route::post('/kontribusi', [KontribusiController::class, 'store'])->name('kontri
 // List kontribusi (Admin)
 Route::get('/admin/kontribusi', [KontribusiController::class, 'index'])->name('kontribusi.index');
 
-// Form Aspirasi (Publik)
-Route::get('/aspirasi/create', [AspirasiController::class, 'create']);
-Route::post('/aspirasi', [AspirasiController::class, 'store']);
+// =======================
+// ROUTE: ASPIRASI (Publik + Admin)
+// =======================
 
-// Admin
-Route::get('/admin/aspirasi', [AspirasiController::class, 'index']);
+// Form aspirasi (Publik)
+Route::get('/aspirasi/create', [AspirasiController::class, 'create'])->name('aspirasi.create');
+Route::post('/aspirasi', [AspirasiController::class, 'store'])->name('aspirasi.store');
+
+// List aspirasi (Admin)
+Route::get('/admin/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
