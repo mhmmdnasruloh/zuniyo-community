@@ -37,5 +37,8 @@ Route::get('/admin/kontribusi', [KontribusiController::class, 'index'])->name('k
 Route::get('/aspirasi/create', [AspirasiController::class, 'create'])->name('aspirasi.create');
 Route::post('/aspirasi', [AspirasiController::class, 'store'])->name('aspirasi.store');
 
+
 // List aspirasi (Admin)
 Route::get('/admin/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
+Route::delete('/admin/aspirasi/{id}', [AspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+
