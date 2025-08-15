@@ -1,13 +1,102 @@
 # 🏫 Zuniyo Community (Laravel 10)
 
 Aplikasi web mini untuk mengelola komunitas mahasiswa sebelum platform resmi Zuniyo launching.  
+Fitur utama:
+- 📋 CMS Komunitas Mahasiswa (CRUD + pagination)
+- ✍️ Form Kontribusi Komunitas
+- 💬 Form Aspirasi Mahasiswa (opsional anonim)
+- (Opsional) Leaderboard Komunitas
 
-**Langkah Install** — Clone repo ini lalu masuk ke folder proyek, install dependency dengan `composer install`, copy `.env.example` menjadi `.env`, atur konfigurasi database (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`), generate app key dengan `php artisan key:generate`, jalankan migrasi dengan `php artisan migrate` (opsional `php artisan db:seed` untuk data awal), lalu jalankan server `php artisan serve`.  
+---
 
-**Fitur Aplikasi** — CMS Komunitas Mahasiswa (CRUD + pagination), Form Kontribusi Komunitas (publik kirim ide/event/artikel), Form Aspirasi Mahasiswa (bisa anonim atau identitas, admin dapat melihat semua aspirasi).  
+## 📥 Langkah Install
 
-**Struktur Database** — Tabel `komunitas`: id (BIGINT, PK), nama (VARCHAR 255), deskripsi (TEXT), kontak (VARCHAR 255), created_at, updated_at. Tabel `kontribusi`: id (BIGINT, PK), nama (VARCHAR 255), email (VARCHAR 255), jenis (VARCHAR 50), deskripsi (TEXT), created_at, updated_at. Tabel `aspirasi`: id (BIGINT, PK), nama (VARCHAR 255), email (VARCHAR 255), topik (VARCHAR 255), isi (TEXT), created_at, updated_at.  
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/mhmmdnasruloh/zuniyo-community.git
+   cd zuniyo-community
 
-**Dokumentasi Route** — Public: GET `/` (redirect ke /komunitas), GET `/kontribusi` (form kontribusi), POST `/kontribusi` (simpan kontribusi), GET `/aspirasi/create` (form aspirasi), POST `/aspirasi` (simpan aspirasi). Admin: GET `/komunitas` (list komunitas), GET `/komunitas/create` (tambah komunitas), POST `/komunitas` (simpan komunitas), GET `/komunitas/{id}/edit` (edit komunitas), PUT `/komunitas/{id}` (update komunitas), DELETE `/komunitas/{id}` (hapus komunitas), GET `/admin/kontribusi` (list kontribusi), GET `/admin/aspirasi` (list aspirasi), DELETE `/admin/aspirasi/{id}` (hapus aspirasi).  
+2.Install Dependency
+    composer install
 
-**Flow Penggunaan** — User publik bisa mengakses form kontribusi atau aspirasi lalu mengirim data. Data tersimpan di database dan dapat dilihat oleh admin melalui dashboard. Admin mengelola data komunitas, kontribusi, dan aspirasi dari panel admin.  
+3.Copy File .env
+    cp .env.example .env
+    
+4.Set Konfigurasi Database
+    Buka file .env
+    Ubah sesuai koneksi database lokal lo, contoh:
+    DB_DATABASE=zuniyo_db
+    DB_USERNAME=root
+    DB_PASSWORD=
+    
+5.Generate App Key
+    php artisan key:generate
+
+6.Jalankan Migrasi
+    php artisan migrate
+
+7.Jalankan server
+    php artisan serve
+
+    🚀 Fitur Aplikasi
+1.CMS Komunitas Mahasiswa
+    Admin dapat menambah, mengedit, dan menghapus data komunitas.
+    Pagination untuk daftar komunitas.
+
+2.Form Kontribusi Komunitas
+    Publik bisa mengirim ide, event, atau artikel.
+    Data tersimpan di database dan bisa dilihat admin.
+
+3.Form Aspirasi Mahasiswa
+    Pengguna bisa mengirim aspirasi anonim atau dengan identitas.
+    Admin bisa melihat semua aspirasi.
+    Data tersimpan aman di database.
+
+🗄 Struktur Database
+**Tabel: komunitas**
+Kolom	        Tipe	        Keterangan
+id	            BIGINT	        Primary Key
+nama	        VARCHAR(255)	Nama komunitas
+deskripsi	    TEXT	        Deskripsi komunitas
+kontak	        VARCHAR(255)	Kontak komunitas
+created_at	    TIMESTAMP	    Otomatis
+updated_at	    TIMESTAMP	    Otomatis
+
+
+**Tabel: kontribusi**
+Kolom	    Tipe	        Keterangan
+id	        BIGINT	        Primary Key
+nama	    VARCHAR(255)	Nama pengirim
+email	    VARCHAR(255)	Email pengirim
+jenis	    VARCHAR(50)    	Jenis kontribusi
+deskripsi	TEXT	        Isikontribusi
+created_at	TIMESTAMP	    Otomatis
+updated_at	TIMESTAMP	    Otomatis
+
+
+**Tabel: aspirasi**
+Kolom	    Tipe	            Keterangan
+id	        BIGINT	            Primary Key
+nama	    VARCHAR(255)	    Nama (opsional)
+email	    VARCHAR(255)	    Email (opsional)
+topik	    VARCHAR(255)	    Topik aspirasi
+isi        	TEXT	            Isi aspirasi
+created_at	TIMESTAMP	        Otomatis
+updated_at	TIMESTAMP	        Otomatis
+
+
+Flow Penggunaan:
+    Pengguna umum bisa kirim kontribusi atau aspirasi via form publik.
+    Admin login, buka halaman admin untuk melihat data kontribusi/aspirasi.
+    Admin kelola data komunitas via menu CMS.
+
+**Cara Akses di Browser (localhost)** —  
+- Halaman daftar komunitas (default/home): `http://127.0.0.1:8000/komunitas`  
+- Tambah komunitas (admin): `http://127.0.0.1:8000/komunitas/create`  
+- Form kontribusi (publik): `http://127.0.0.1:8000/kontribusi`  
+- List kontribusi (admin): `http://127.0.0.1:8000/admin/kontribusi`  
+- Form aspirasi (publik): `http://127.0.0.1:8000/aspirasi/create`  
+- List aspirasi (admin): `http://127.0.0.1:8000/admin/aspirasi`  
+
+
+
