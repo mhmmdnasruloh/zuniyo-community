@@ -16,10 +16,12 @@ Fitur utama:
    git clone https://github.com/mhmmdnasruloh/zuniyo-community.git
    cd zuniyo-community
 
-2.Install Dependency
+2.**Install Dependency**
+```bash
     composer install
 
 3.Copy File .env
+```bash
     cp .env.example .env
     
 4.Set Konfigurasi Database
