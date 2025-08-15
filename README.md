@@ -103,3 +103,13 @@ Akses di browser: **http://localhost:8000**
 | isi        | TEXT         | Isi aspirasi      |
 | created_at | TIMESTAMP    | Otomatis          |
 | updated_at | TIMESTAMP    | Otomatis          |
+
+
+
+**Cara Akses di Browser (localhost)** —  
+- Halaman daftar komunitas (default/home): `http://127.0.0.1:8000/komunitas`  
+- Tambah komunitas (admin): `http://127.0.0.1:8000/komunitas/create`  
+- Form kontribusi (publik): `http://127.0.0.1:8000/kontribusi`  
+- List kontribusi (admin): `http://127.0.0.1:8000/admin/kontribusi`  
+- Form aspirasi (publik): `http://127.0.0.1:8000/aspirasi/create`  
+- List aspirasi (admin): `http://127.0.0.1:8000/admin/aspirasi`  
