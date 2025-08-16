@@ -2,7 +2,7 @@
 
 Aplikasi web mini untuk mengelola komunitas mahasiswa sebelum platform resmi Zuniyo launching.  
 Fitur utama:
-- 📋 CMS Komunitas Mahasiswa (CRUD + pagination)
+- 📋 CMS Komunitas Mahasiswa ((CRUD + pagination))
 - ✍️ Form Kontribusi Komunitas
 - 💬 Form Aspirasi Mahasiswa (opsional anonim)
 - (Opsional) Leaderboard Komunitas
