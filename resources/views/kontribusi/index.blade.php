@@ -31,6 +31,9 @@
         </tbody>
     </table>
 
-    {{ $kontribusi->links() }}
+    <div class="d-flex justify-content-center">
+    {{ $kontribusi->links('pagination::bootstrap-4') }}
+    </div>
+
 </div>
 @endsection
