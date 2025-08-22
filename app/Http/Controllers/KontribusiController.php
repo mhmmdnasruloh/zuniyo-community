@@ -28,7 +28,7 @@ class KontribusiController extends Controller
 
         $kontribusi = Kontribusi::create($request->all());
 
-        // Kirim email hanya jika user isi email
+    
         if ($kontribusi->email) {
             Mail::to($kontribusi->email)->send(new KontribusiMasukMail($kontribusi));
         }

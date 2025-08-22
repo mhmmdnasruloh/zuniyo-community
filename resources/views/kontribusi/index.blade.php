@@ -13,7 +13,7 @@
                 <th>Isi</th>
                 <th>Dikirim Pada</th>
             </tr>
-        </theaad>
+        </thead>
         <tbody>
             @forelse ($kontribusi as $item)
             <tr>
