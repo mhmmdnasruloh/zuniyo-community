@@ -1,4 +1,4 @@
-# 🏫 Zuniyo Community (Laravel 10)
+# 🏫 Zuniyo Community (Laravel 10)a
 
 Aplikasi web mini untuk mengelola komunitas mahasiswa sebelum platform resmi Zuniyo launching.  
 Fitur utama:
