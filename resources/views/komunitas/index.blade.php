@@ -4,7 +4,6 @@
 <div class="container mt-4">
     <h2>Daftar Komunitas Mahasiswa</h2>
     <a href="{{ route('komunitas.create') }}" class="btn btn-primary mb-3">Tambah Komunitas</a>
-
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif

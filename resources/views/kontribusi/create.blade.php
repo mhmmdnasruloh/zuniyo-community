@@ -27,6 +27,7 @@
         </div>
 
         <div class="mb-3">
+            
             <label>Isii Kontribusi</label>
             <textarea name="isi" class="form-control" rows="4" required></textarea>
         </div>
